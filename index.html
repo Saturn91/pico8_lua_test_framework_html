@@ -36,7 +36,6 @@ function init()
     tests = 0
     failed = 0
     passed = 0
-    log("-----Test starts-----")
 end
 
 function title(text)
@@ -98,7 +97,7 @@ function assert_equal(a, b, description)
         failed = failed + 1
         log_error(description.." failed -> "..convertAnyToString(a).." != "..convertAnyToString(b))
     else 
-        log("✅  -> "..description)
+        log("[PASS] -> "..description)
         passed = passed + 1
     end    
 end
@@ -106,9 +105,8 @@ end
 
 
 function result()
-    log("----------------------")
     if failed > 0 then log_error(""..failed.."/"..tests.." tests failed!") else 
-        log("test succeded: "..passed.."/"..tests.." passed")
+        log("[PASS] -> test succeded: "..passed.."/"..tests.." passed")
     end
 end
 
@@ -131,7 +129,7 @@ function sort(a)
 end
 
 --functions tests:
-assert_equal(sort({4,3,2,1}),{1,2,3,3},"test sort1")
+assert_equal(sort({3,3,2,1}),{1,2,3,4},"test sort1")
 assert_equal(sort({4,3,2,1}),{1,2,3,4},"test sort2")
 
 result()
@@ -139,6 +137,10 @@ result()
 </head>
 <body>
     <h1>Pico8 Tests</h1>
+    <div class="controls" id="show-passed">
+        <input type="checkbox" checked />
+        <label>show-passed tests</label>
+    </div>
     <div id="test-output-element" class="cmd"></div>
     <p class="made-by">made by: <a href="https://saturn91.dev/">Saturn91.dev</a></p>
     <script src="test_framework/index.js" type="text/javascript"></script>

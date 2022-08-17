@@ -2,19 +2,20 @@
     margin: 0;
     padding: 0;
     font-family: 'Silkscreen', cursive;
+    font-weight: bold;
 }
 
 body {
     background-color: rgb(14, 26, 10);
 }
 
-p {
-    font-size: 20px;
-    font-weight: bold;
-}
-
 .error-line {
     color: rgb(255, 119, 0);
+}
+
+p {
+    font-size: 20px;
+    color: rgb(0, 255, 0);
 }
 
 .info-line {
@@ -44,4 +45,15 @@ h1 {
 
 .made-by a {
     color: blue;
+}
+
+.controls {
+    margin: 16px;
+    font-size: 20px;
+    color: rgb(0, 255, 0);
+}
+
+.controls input {
+    height: 16px;
+    width: 16px;
 }
