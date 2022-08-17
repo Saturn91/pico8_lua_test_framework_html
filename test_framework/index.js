@@ -1,6 +1,4 @@
 const test_output = window.test_output.split(window.lua_output_new_line);
-console.log(test_output)
-
 const testOutputElement = document.getElementById("test-output-element");
 
 test_output.forEach(log_line => {

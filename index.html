@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Pico8 Test Frame work by Saturn91</title>
     <link rel="stylesheet" href="test_framework/index.css">
     <script src="test_framework/fengari-web.js" type="text/javascript"></script>
     <script type="application/lua" async>
@@ -98,6 +98,7 @@ function assert_equal(a, b, description)
         failed = failed + 1
         log_error(description.." failed -> "..convertAnyToString(a).." != "..convertAnyToString(b))
     else 
+        log("✅  -> "..description)
         passed = passed + 1
     end    
 end
@@ -105,7 +106,7 @@ end
 
 
 function result()
-    
+    log("----------------------")
     if failed > 0 then log_error(""..failed.."/"..tests.." tests failed!") else 
         log("test succeded: "..passed.."/"..tests.." passed")
     end
@@ -130,7 +131,6 @@ function sort(a)
 end
 
 --functions tests:
-
 assert_equal(sort({4,3,2,1}),{1,2,3,3},"test sort1")
 assert_equal(sort({4,3,2,1}),{1,2,3,4},"test sort2")
 
