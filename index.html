@@ -5,29 +5,35 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="fengari-web.js" type="text/javascript"></script>
-    <script type="application/lua">
-        local testlib = {}
+    <link rel="stylesheet" href="test_framework/index.css">
+    <script src="test_framework/fengari-web.js" type="text/javascript"></script>
+    <script type="application/lua" async>
+local js=require "js"
+local window=js.global
+window.test_output = ""
+window.lua_output_new_line = "__NEWLINE__"
 
 local tests = 0
 local failed = 0
 local passed = 0
 
 function log(info)
-    print("[info]: "..info)
+    local info_string="[info]: "..info
+    print(info_string)
+    window.test_output=window.test_output..info..window.lua_output_new_line
 end
 
 function log_error(error)
-    print("--> [error]: "..error)
+    local error_string="--> [error]: "..error
+    print(error_string)
+    window.test_output=window.test_output..error_string..window.lua_output_new_line
 end
 
 function init() 
     tests = 0
     failed = 0
     passed = 0
-    print("")
-    print("")
-    print("-----Test starts-----")
+    log("-----Test starts-----")
 end
 
 function title(text)
@@ -92,6 +98,8 @@ function assert_equal(a, b, description)
     end
 end
 
+
+
 function result()
     
     if failed > 0 then log_error(""..failed.."/"..passed.." tests failed!") else 
@@ -122,13 +130,11 @@ end
 assert_equal(sort({4,3,2,1}),{1,2,3,3},"test sort")
 
 result()
-    </script>    
-    <script src="/my-script.lua" type="application/lua" async></script>    
-    
+    </script>
 </head>
 <body>
-    <script type="text/javascript">
-        console.log(window.test_suite);
-    </script>
+    <h1>Pico8 Tests</h1>
+    <div id="test-output-element" class="cmd"></div>
+    <script src="test_framework/index.js" type="text/javascript"></script>
 </body>
 </html>
